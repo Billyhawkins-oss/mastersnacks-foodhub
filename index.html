@@ -1,367 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mastersnacks Foodhub | Premium Restaurant In Kireka</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastersnacks Foodhub</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #0a0a0a;
-      color: white;
-      overflow-x: hidden;
+    body{
+      background:white;
+      color:#222;
+      line-height:1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    .hero{
+      height:100vh;
+      background:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1600&auto=format&fit=crop') center/cover;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
     }
 
-    .hero {
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-      url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1600&auto=format&fit=crop') center/cover;
-      position: relative;
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.65);
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 8%;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:20px;
+      max-width:800px;
     }
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #facc15;
+    .hero h1{
+      font-size:64px;
+      margin-bottom:20px;
+      letter-spacing:2px;
     }
 
-    nav ul {
-      display: flex;
-      gap: 30px;
-      list-style: none;
+    .hero p{
+      font-size:22px;
+      margin-bottom:30px;
     }
 
-    nav ul li a:hover {
-      color: #facc15;
+    .btn{
+      padding:15px 30px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+      margin:10px;
+      transition:0.3s;
+      text-decoration:none;
+      display:inline-block;
     }
 
-    .hero-content {
-      height: 100%;
-      padding-top: 140px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
+    .btn:hover{
+      transform:translateY(-3px);
     }
 
-    .hero-content h1 {
-      font-size: 5rem;
-      max-width: 900px;
-      line-height: 1.1;
-      margin-bottom: 20px;
+    .primary{
+      background:orange;
+      color:white;
     }
 
-    .hero-content p {
-      color: #d4d4d4;
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin-bottom: 40px;
+    .secondary{
+      background:transparent;
+      border:2px solid white;
+      color:white;
     }
 
-    .buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
+    section{
+      padding:80px 10%;
     }
 
-    .btn {
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: 0.3s ease;
+    .title{
+      text-align:center;
+      margin-bottom:50px;
     }
 
-    .btn-primary {
-      background: #facc15;
-      color: black;
+    .title h2{
+      font-size:40px;
     }
 
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.2);
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
     }
 
-    section {
-      padding: 100px 8%;
+    .card{
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
+      transition:0.3s;
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
+    .card:hover{
+      transform:translateY(-5px);
     }
 
-    .section-title h2 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    .card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
     }
 
-    .section-title p {
-      color: #a3a3a3;
+    .card-content{
+      padding:20px;
     }
 
-    .about {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 50px;
-      align-items: center;
+    .price{
+      color:orange;
+      font-weight:bold;
+      margin-top:10px;
     }
 
-    .about img,
-    .contact-image img {
-      width: 100%;
-      border-radius: 30px;
-      height: 500px;
-      object-fit: cover;
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
     }
 
-    .about-text p {
-      color: #cfcfcf;
-      line-height: 1.9;
-      margin-bottom: 20px;
+    .about img{
+      width:100%;
+      border-radius:20px;
+      height:400px;
+      object-fit:cover;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .testimonial-section{
+      background:#f4f4f4;
     }
 
-    .gallery-grid img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 25px;
-      transition: 0.4s ease;
+    .testimonial-card{
+      background:white;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
     }
 
-    .gallery-grid img:hover {
-      transform: scale(1.04);
+    .booking-section{
+      background:#111;
+      color:white;
+      text-align:center;
     }
 
-    .booking-form,
-    .contact-box {
-      background: #111;
-      padding: 50px;
-      border-radius: 30px;
-      border: 1px solid rgba(255,255,255,0.08);
+    form{
+      max-width:600px;
+      margin:auto;
     }
 
-    .booking-form {
-      max-width: 850px;
-      margin: auto;
+    input{
+      width:100%;
+      padding:15px;
+      margin-bottom:20px;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
     }
 
-    .form-grid,
-    .contact-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    footer{
+      background:#000;
+      color:white;
+      padding:60px 10%;
     }
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 18px;
-      border-radius: 15px;
-      border: none;
-      background: #1f1f1f;
-      color: white;
-      font-family: inherit;
+    .footer-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:40px;
     }
 
-    textarea {
-      min-height: 140px;
-      resize: none;
-      margin-top: 20px;
+    .footer-column h3{
+      margin-bottom:20px;
+      font-size:24px;
+      color:orange;
     }
 
-    button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 18px;
-      border: none;
-      border-radius: 15px;
-      background: #facc15;
-      color: black;
-      font-weight: 700;
-      cursor: pointer;
+    .footer-column p{
+      margin-bottom:10px;
+      color:#ccc;
     }
 
-    footer {
-      padding: 30px;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #a3a3a3;
+    .footer-bottom{
+      text-align:center;
+      margin-top:40px;
+      border-top:1px solid #333;
+      padding-top:20px;
+      color:#999;
     }
 
-    @media(max-width: 768px) {
-      .hero-content h1 {
-        font-size: 3rem;
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:42px;
       }
 
-      nav ul {
-        display: none;
+      .hero p{
+        font-size:18px;
       }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      .title h2{
+        font-size:32px;
+      }
+
     }
+
   </style>
+
 </head>
+
 <body>
 
-<header class="hero">
-  <nav>
-    <div class="logo">Mastersnacks Foodhub</div>
+  <!-- HERO SECTION -->
 
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#booking">Booking</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <section class="hero">
 
-  <div class="hero-content">
-    <h1>Premium Dining Experience In Kireka</h1>
+    <div class="overlay"></div>
 
-    <p>
-      Experience delicious local and international meals, premium customer service,
-      fast takeaway options, and a relaxing dining atmosphere at Mastersnacks Foodhub in Kireka.
-    </p>
+    <div class="hero-content">
 
-    <div class="buttons">
-      <a href="#booking" class="btn btn-primary">Book A Table</a>
-      <a href="https://wa.me/256787683802" class="btn btn-secondary">Order On WhatsApp</a>
-    </div>
-  </div>
-</header>
+      <h1>MASTERSNACKS FOODHUB</h1>
 
-<section id="about">
-  <div class="section-title">
-    <h2>About Us</h2>
-    <p>Exceptional food, premium ambience, and memorable dining experiences in Kampala</p>
-  </div>
+      <p>Premium Meals • Fast Service • Kireka Kampala</p>
 
-  <div class="about">
-    <div class="about-text">
-      <p>
-        Mastersnacks Foodhub is one of Kireka’s fast-growing restaurants known for delicious meals, professional customer service, and a welcoming atmosphere for families, couples, tourists, and food lovers.
-      </p>
+      <a href="https://wa.me/256787683802" class="btn primary">Order on WhatsApp</a>
 
-      <p>
-        Whether you are looking for breakfast, lunch, dinner, takeaway, or a comfortable place to spend time with friends and family, Mastersnacks Foodhub delivers a modern restaurant experience with quality food and excellent hospitality every day.
-      </p>
+      <a href="#menu" class="btn secondary">View Menu</a>
+
     </div>
 
-    <img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=60&w=900&auto=format&fit=crop" alt="Restaurant interior">
-  </div>
-</section>
+  </section>
 
-<section id="gallery">
-  <div class="section-title">
-    <h2>Food Gallery</h2>
-    <p>Enjoy freshly prepared meals, quality presentation, and a beautiful restaurant atmosphere</p>
-  </div>
 
-  <div class="gallery-grid">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=60&w=800&auto=format&fit=crop" alt="Food">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?q=60&w=800&auto=format&fit=crop" alt="Food">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=60&w=800&auto=format&fit=crop" alt="Restaurant">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=60&w=800&auto=format&fit=crop" alt="Food">
-  </div>
-</section>
+  <!-- POPULAR MEALS -->
 
-<section id="booking">
-  <div class="section-title">
-    <h2>Book A Table</h2>
-    <p>Reserve your table for birthdays, meetings, family dinners, and special occasions</p>
-  </div>
+  <section id="menu">
 
-  <div class="booking-form">
-    <form id="bookingForm">
-      <div class="form-grid">
-        <input type="text" placeholder="Full Name" required>
-        <input type="tel" placeholder="Phone Number" required>
-        <input type="date" required>
-        <input type="time" required>
+    <div class="title">
+      <h2>Popular Meals</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <img loading="lazy" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=60&w=900&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>Chicken & Chips</h3>
+
+          <p class="price">UGX 18,000</p>
+
+        </div>
+
       </div>
 
-      <textarea placeholder="Additional Notes"></textarea>
+      <div class="card">
 
-      <button type="submit">Submit Booking</button>
+        <img loading="lazy" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=60&w=900&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>Rolex Special</h3>
+
+          <p class="price">UGX 7,000</p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img loading="lazy" src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=60&w=900&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>BBQ Platter</h3>
+
+          <p class="price">UGX 25,000</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT US -->
+
+  <section>
+
+    <div class="title">
+      <h2>About Us</h2>
+    </div>
+
+    <div class="about">
+
+      <div>
+
+        <h2>Welcome To Mastersnacks Foodhub</h2>
+
+        <br>
+
+        <p>
+          Mastersnacks Foodhub is one of Kireka’s growing food destinations,
+          serving delicious meals, fast food, BBQ, local dishes, and refreshing drinks
+          in a clean and comfortable environment.
+        </p>
+
+        <br>
+
+        <p>
+          We are committed to delivering quality meals, excellent customer
+          service, and memorable dining experiences for every customer.
+        </p>
+
+        <br>
+
+        <p>📍 Kireka, Kampala Uganda</p>
+
+        <p>📞 +256 787 683802</p>
+
+      </div>
+
+      <img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=60&w=1200&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOD GALLERY -->
+
+  <section>
+
+    <div class="title">
+      <h2>Food Gallery</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?q=60&w=900&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Delicious Local Dishes</h3>
+          <p>Freshly prepared meals served daily with quality ingredients.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=60&w=900&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Premium Restaurant Space</h3>
+          <p>Comfortable seating and a modern dining atmosphere.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=60&w=900&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Fast Food Specials</h3>
+          <p>Quick takeaway meals for lunch, dinner, and late-night cravings.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY CHOOSE US -->
+
+  <section class="testimonial-section">
+
+    <div class="title">
+      <h2>Why Choose Mastersnacks?</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="testimonial-card">
+
+        <h3>Fresh Meals Daily</h3>
+
+        <br>
+
+        <p>
+          We prepare fresh meals every day using quality ingredients and professional cooking standards.
+        </p>
+
+      </div>
+
+      <div class="testimonial-card">
+
+        <h3>Fast Customer Service</h3>
+
+        <br>
+
+        <p>
+          Our team is dedicated to providing quick service and a smooth customer experience.
+        </p>
+
+      </div>
+
+      <div class="testimonial-card">
+
+        <h3>Comfortable Environment</h3>
+
+        <br>
+
+        <p>
+          Enjoy your meals in a clean, relaxing, and family-friendly restaurant atmosphere.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TESTIMONIALS -->
+
+  <section class="testimonial-section">
+
+    <div class="title">
+      <h2>What Customers Say</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="testimonial-card">
+
+        <p>
+          “The food is always fresh and the customer service is amazing. Definitely one of the best spots in Kireka.”
+        </p>
+
+        <br>
+
+        <h4>- Brian K.</h4>
+
+      </div>
+
+      <div class="testimonial-card">
+
+        <p>
+          “Amazing food and excellent customer service. Highly recommended.”
+        </p>
+
+        <br>
+
+        <h4>- Customer Review</h4>
+
+      </div>
+
+      <div class="testimonial-card">
+
+        <p>
+          “The meals are delicious and affordable. Great atmosphere too.”
+        </p>
+
+        <br>
+
+        <h4>- Sarah M.</h4>
+
+      </div>
+
+      <div class="testimonial-card">
+
+        <p>
+          “One of the best food places in Kireka. Fast service and tasty meals.”
+        </p>
+
+        <br>
+
+        <h4>- James T.</h4>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SPECIAL SERVICES -->
+
+  <section>
+
+    <div class="title">
+      <h2>Our Services</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <img loading="lazy" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=60&w=900&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>Family Dining</h3>
+
+          <p>
+            Spacious seating perfect for family meals and group gatherings.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img loading="lazy" src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=60&w=900&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>Takeaway Orders</h3>
+
+          <p>
+            Convenient takeaway and fast food ordering available daily.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img loading="lazy" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=60&w=900&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>Events & Celebrations</h3>
+
+          <p>
+            Host birthdays, meetings, and special events in a comfortable setting.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TABLE BOOKING -->
+
+  <section class="booking-section">
+
+    <div class="title">
+      <h2>Reserve a Table</h2>
+    </div>
+
+    <p style="margin-bottom:40px;">
+      Book your table and enjoy delicious meals with friends and family.
+    </p>
+
+    <form>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="number" placeholder="Phone Number">
+
+      <input type="date">
+
+      <button class="btn primary">Reserve Now</button>
+
     </form>
-  </div>
-</section>
 
-<section id="contact">
-  <div class="section-title">
-    <h2>Contact Us</h2>
-    <p>Contact us for reservations, takeaway orders, and customer support</p>
-  </div>
+  </section>
 
-  <div class="contact-container">
-    <div class="contact-box">
-      <h3>Phone / WhatsApp</h3>
-      <p>+256 787 683802</p>
 
-      <br>
+  <!-- FOOTER -->
 
-      <h3>Location</h3>
-      <p>Kireka Road, Near Hared Petrol Station, Kampala, Uganda</p>
+  <footer>
 
-      <br>
+    <div class="footer-container">
 
-      <h3>Opening Hours</h3>
-      <p>Open 24 Hours</p>
+      <div class="footer-column">
+
+        <h3>Mastersnacks Foodhub</h3>
+
+        <p>
+          Delicious meals, quality service, and memorable dining experiences
+          in Kireka Kampala.
+        </p>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h3>Contact</h3>
+
+        <p>📍 Kireka, Kampala Uganda</p>
+
+        <p>📞 +256 787 683802</p>
+
+        <p>✉ mastersnacksfoodhub@gmail.com</p>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h3>Services</h3>
+
+        <p>Restaurant Dining</p>
+
+        <p>Fast Food</p>
+
+        <p>BBQ & Grills</p>
+
+        <p>Takeaway Orders</p>
+
+      </div>
+
     </div>
 
-    <div class="contact-image">
-      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200&auto=format&fit=crop" alt="Restaurant">
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Mastersnacks Foodhub. All Rights Reserved.
+      </p>
+
     </div>
-  </div>
-</section>
 
-<footer>
-  <p>© 2026 Mastersnacks Foodhub. Designed with excellence for premium dining experiences.</p>
-</footer>
-
-<script>
-  const form = document.getElementById('bookingForm');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you! Your booking request has been submitted.');
-    form.reset();
-  });
-</script>
+  </footer>
 
 </body>
 </html>
